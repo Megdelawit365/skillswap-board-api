@@ -11,3 +11,43 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+enum Type {
+  OFFERING
+  WANTING
+}
+
+model User {
+  id        Int        @id @default(autoincrement())
+  name      String
+  email     String     @unique
+  listings  Listing[]
+  responses Response[]
+}
+
+model Listing {
+  id        Int        @id @default(autoincrement())
+  type      Type
+  skills    Skill[]
+  responses Response[]
+
+  user   User? @relation(fields: [userId], references: [id])
+  userId Int?
+}
+
+model Skill {
+  id       Int       @id @default(autoincrement())
+  name     String
+  listings Listing[]
+}
+
+model Response {
+  id      Int    @id @default(autoincrement())
+  content String
+
+  listingId Int
+  listing   Listing @relation(fields: [listingId], references: [id])
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}
