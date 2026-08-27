@@ -1,4 +1,3 @@
-import { prisma } from '../lib/prisma'
 
 export const validateListing = (req, res, next) => {
     // since responses are not added when listing is created, its not included
