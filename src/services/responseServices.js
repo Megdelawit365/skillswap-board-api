@@ -1,4 +1,4 @@
-import { prisma } from '../lib/prisma'
+import { prisma } from '../lib/prisma.js'
 
 export const getResponses = async (id) => {
     const responses = prisma.response.findMany({

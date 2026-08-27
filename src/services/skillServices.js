@@ -1,4 +1,4 @@
-import { prisma } from '../lib/prisma'
+import { prisma } from '../lib/prisma.js'
 export const getSkills = async () => {
     const allSkills = await prisma.skill.findMany()
     return allSkills

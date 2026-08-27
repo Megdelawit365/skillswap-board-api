@@ -1,5 +1,5 @@
 import express from "express"
-import requestLogger from "./middleware/requestLogger.js"
+import { requestLogger } from "./middleware/requestLogger.js"
 import listingRoutes from "./routes/listingRoutes.js"
 import responseRoutes from "./routes/responseRoutes.js"
 import skillRoutes from "./routes/skillRoutes.js"

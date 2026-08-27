@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getSkills } from "../controllers/skillControllers";
+import { getSkills } from "../controllers/skillControllers.js";
 const router = Router()
 
 router.get("/", getSkills)

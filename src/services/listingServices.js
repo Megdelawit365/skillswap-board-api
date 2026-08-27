@@ -1,9 +1,10 @@
-import { prisma } from '../lib/prisma'
+import { prisma } from '../lib/prisma.js'
 export const getListings = async () => {
     const allListings = await prisma.listing.findMany()
     return allListings
 }
 export const getListingById = async (id) => {
+    id = Number(id)
     const listing = await prisma.listing.findUnique({
         where: { id: id }
     })
@@ -28,7 +29,7 @@ export const updateListing = async (id, body) => {
         data: {
             type: body.type,
             skills: {
-                set: body.skills.map(skillId => ({ id: skillId }))
+                connect: body.skills.map(skillId => ({ id: skillId }))
             }
         }
     })
