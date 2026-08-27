@@ -1,5 +1,11 @@
 # SKILLSWAP BOARD API
 
+SkillSwap Board is where people can share skills they are willing to teach, ask for skills they want to learn, discover relevant listings, and respond to opportunities posted by others.
+
+## FEATURES
+
+- 
+
 ## DATABASE DESIGN
 
 ### TABLES OVERVIEW
