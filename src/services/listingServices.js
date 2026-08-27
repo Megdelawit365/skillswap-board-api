@@ -58,7 +58,7 @@ export const updateListing = async (id, body) => {
 export const deleteListing = async (id) => {
     await prisma.listing.delete({
         where: {
-            id: id
+            id: Number(id)
         }
     })
     return true
