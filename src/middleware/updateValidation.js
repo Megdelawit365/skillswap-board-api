@@ -3,7 +3,7 @@ export const validateListingUpdate = (req, res, next) => {
     const allowedFields = ["type", "skills"]
     for (const [k, v] in Object.entries(body)) {
         if (!allowedFields.includes(k)) {
-            res.status(400).json({
+            return res.status(400).json({
                 message: `${k} is not an editable field.`
             })
         }
@@ -11,7 +11,7 @@ export const validateListingUpdate = (req, res, next) => {
 
     if (body.type) {
         if (typeof (type) != "string" || type.trim() == "" || !["offering,wanting"].includes(type.toLowerCase())) {
-            res.status(400).json({
+            return res.status(400).json({
                 message: "Type is missing or invalid."
             })
         }
@@ -19,7 +19,7 @@ export const validateListingUpdate = (req, res, next) => {
 
     if (body.skills) {
         if (skills == []) {
-            res.status(400).json({
+            return res.status(400).json({
                 message: "Skills cannot be empty."
             })
         }
