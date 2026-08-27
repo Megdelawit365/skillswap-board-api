@@ -107,14 +107,26 @@ cd skillswap-board-api
 
 1. Environment Setup:
    Create a .env file in the root directory based on .env.example:
+
+```bash
    DATABASE_URL=
    PORT=
+```
 
 2. Run database migrations:
+
+```bash
    npx prisma migrate dev
+```
 
-3. Seed the database:
+4. Seed the database:
+
+```bash
    npx prisma db seed
+```
 
-4. Start the server:
+5. Start the server:
+
+```bash
    npm run dev
+```
