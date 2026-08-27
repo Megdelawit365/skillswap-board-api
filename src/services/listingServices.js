@@ -21,15 +21,17 @@ export const createListing = async (body) => {
     return newListing
 }
 export const updateListing = async (id, body) => {
-    const updatedListing =
-        await prisma.listing.update({
-            where: {
-                id: id
-            },
-            data: {
-
+    const updatedListing = await prisma.listing.update({
+        where: {
+            id: id
+        },
+        data: {
+            type: body.type,
+            skills: {
+                set: body.skills.map(skillId => ({ id: skillId }))
             }
-        });
+        }
+    })
     return updateListing
 }
 export const deleteListing = async (id) => {
