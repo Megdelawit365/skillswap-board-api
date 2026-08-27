@@ -92,8 +92,6 @@ skillswap-board-api/
 
 ## HOW TO RUN
 
-## How to Run
-
 1. Clone the repository
    git clone https://github.com/Megdelawit365/skillswap-board-api
    cd skillswap-board-api
