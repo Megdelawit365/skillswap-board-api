@@ -27,19 +27,34 @@ export const createListing = async (body) => {
     return newListing
 }
 export const updateListing = async (id, body) => {
+    const updateFields = {}
+    if (body.type) {
+        updateFields.type = body.type.toUpperCase();
+    }
+
+    if (body.skills && Array.isArray(body.skills)) {
+        updateFields.skills = {
+            set: body.skills.map((skillId) => ({ id: Number(skillId) }))
+        };
+    }
+
+    if (body.description) {
+        updateFields.description = body.description;
+    }
     const updatedListing = await prisma.listing.update({
         where: {
-            id: id
+            id: Number(id)
         },
-        data: {
-            type: body.type,
-            skills: {
-                connect: body.skills.map(skillId => ({ id: skillId }))
-            }
+        data: updateFields,
+        include: {
+            skills: true,
+            responses: true
         }
     })
-    return updateListing
+    return updatedListing
 }
+
+
 export const deleteListing = async (id) => {
     await prisma.listing.delete({
         where: {
