@@ -20,20 +20,24 @@ enum Type {
 model Listing {
   id          Int        @id @default(autoincrement())
   type        Type
+  email       String
   skills      Skill[]
   description String
   responses   Response[]
+  createdAt   DateTime   @default(now())
 }
 
 model Skill {
-  id       Int       @id @default(autoincrement())
-  name     String
-  listings Listing[]
+  id        Int       @id @default(autoincrement())
+  name      String
+  listings  Listing[]
+  createdAt DateTime  @default(now())
 }
 
 model Response {
-  id      Int    @id @default(autoincrement())
-  content String
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
 
   listingId Int
   listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
