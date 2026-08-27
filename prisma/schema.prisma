@@ -4,7 +4,7 @@
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../src/generated/prisma"
 }
 
@@ -18,10 +18,11 @@ enum Type {
 }
 
 model Listing {
-  id        Int        @id @default(autoincrement())
-  type      Type
-  skills    Skill[]
-  responses Response[]
+  id          Int        @id @default(autoincrement())
+  type        Type
+  skills      Skill[]
+  description String
+  responses   Response[]
 }
 
 model Skill {
