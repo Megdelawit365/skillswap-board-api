@@ -2,16 +2,22 @@
 export const validateListing = (req, res, next) => {
     // since responses are not added when listing is created, its not included
 
-    const { type, skills } = req.body
-    if (type == undefined || typeof (type) != "string" || !["offering,wanting"].includes(type.toLowerCase())) {
+    const { type, skills, description } = req.body
+    if (type == undefined || typeof (type) != "string" || !["offering", "wanting"].includes(type.trim().toLowerCase())) {
         return res.status(400).json({
             message: "Type is missing or invalid."
         })
     }
 
-    if (skills == undefined || skills == []) {
+    if (skills == undefined || !Array.isArray(skills) || skills.length === 0) {
         return res.status(400).json({
             message: "Skills are required."
+        })
+    }
+
+    if (!description || typeof (description) != "string" || description.trim() == "") {
+        return res.status(400).json({
+            message: "Description is missing or invalid."
         })
     }
 
