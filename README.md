@@ -92,23 +92,29 @@ skillswap-board-api/
 
 ## HOW TO RUN
 
-1. Clone the repository
-   git clone https://github.com/Megdelawit365/skillswap-board-api
-   cd skillswap-board-api
+1. Clone the repository  
 
-2. Install dependencies:
+```bash
+git clone https://github.com/Megdelawit365/skillswap-board-api
+cd skillswap-board-api
+```
+
+1. Install dependencies:
+
+```bash
    npm install
+```
 
-3. Environment Setup:
+1. Environment Setup:
    Create a .env file in the root directory based on .env.example:
    DATABASE_URL=
    PORT=
 
-4. Run database migrations:
+2. Run database migrations:
    npx prisma migrate dev
 
-5. Seed the database:
+3. Seed the database:
    npx prisma db seed
 
-6. Start the server:
+4. Start the server:
    npm run dev
