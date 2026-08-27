@@ -20,6 +20,8 @@ export const createListing = async (body) => {
             },
             responses: responses,
             description: description
+        }, include: {
+            skills: true
         }
     })
     return newListing
