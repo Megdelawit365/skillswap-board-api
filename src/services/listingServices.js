@@ -10,13 +10,12 @@ export const getListingById = async (id) => {
     return listing
 }
 export const createListing = async (body) => {
-    const { type, skills, responses, userId } = body
+    const { type, skills, responses } = body
     const newListing = await prisma.listing.create({
         data: {
             type: type,
             skills: skills,
             responses: responses,
-            userId: userId
         }
     })
     return newListing

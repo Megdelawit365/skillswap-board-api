@@ -7,13 +7,12 @@ export const getResponses = async (id) => {
     return responses
 }
 export const createResponse = async (id, body) => {
-    const { content, listingId, userId } = body
+    const { content, listingId } = body
     const currentListing = prisma.listing.findUnique({ where: { id: id } })
     const newResponse = await currentListing.create({
         data: {
             content: content,
-            listingId: listingId,
-            userId: userId
+            listingId: listingId
         }
     })
     return newResponse
