@@ -14,7 +14,7 @@ export const getResponses = async (req, res) => {
 export const createResponses = async (req, res) => {
     try {
         const body = req.body
-        const id = req.params.id
+        const { id } = req.params;
         const newResponse = await responseService.createResponse(id, body)
         return res.status(201).json({
             message: "Response added successfully.",

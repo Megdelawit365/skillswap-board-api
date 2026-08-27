@@ -35,16 +35,10 @@ export const validateListing = (req, res, next) => {
 }
 
 export const validateResponse = (req, res, next) => {
-    const { content, listingId } = req.body
-    if (content == undefined || content == " ") {
+    const { content } = req.body
+    if (content == undefined || content.trim() == "") {
         return res.status(400).json({
             message: "Response content cannot be empty."
-        })
-    }
-
-    if (listingId == undefined || typeof (listingId) != "numeric") {
-        return res.status(400).json({
-            message: "Listing id is missing or invalid."
         })
     }
 
