@@ -2,7 +2,8 @@
 import * as listingService from "../services/listingServices.js"
 export const getListings = async (req, res) => {
     try {
-        const listings = await listingService.getListings()
+        const queries = req.query
+        const listings = await listingService.getListings(queries)
         return res.status(200).json({
             data: listings
         })

@@ -28,6 +28,7 @@ async function main() {
         data: {
             type: "OFFERING",
             description: "I can teach javascript basics.",
+            email: "abebe@gmail.com",
             skills: {
                 connect: [{ id: skill1.id }]
             }
@@ -38,6 +39,7 @@ async function main() {
         data: {
             type: "WANTING",
             description: "I need a graphic designer.",
+            email: "bekele@gmail.com",
             skills: {
                 connect: [{ id: skill2.id }]
             }

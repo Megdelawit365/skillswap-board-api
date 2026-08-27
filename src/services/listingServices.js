@@ -1,6 +1,22 @@
 import { prisma } from '../lib/prisma.js'
-export const getListings = async () => {
-    const allListings = await prisma.listing.findMany()
+export const getListings = async (query) => {
+    const queries = {}
+    if (query.type) {
+        queries.type = query.type
+    }
+    if (query.skill) {
+        queries.skill = query.skill
+    }
+    if (query.search) {
+        queries.description = {
+            contains: query.search
+        }
+    }
+    const page = Number(query.page) || 1
+    const limit = Number(query.limit) || 10
+    const skip = (page - 1) * limit
+
+    const allListings = await prisma.listing.findMany({ where: queries, skip, take: limit })
     return allListings
 }
 export const getListingById = async (id) => {
