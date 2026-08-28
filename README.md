@@ -99,33 +99,32 @@ git clone https://github.com/Megdelawit365/skillswap-board-api
 cd skillswap-board-api
 ```
 
-1. Install dependencies:
+2. Install dependencies:
 
 ```bash
    npm install
 ```
 
-1. Environment Setup:
-   Create a .env file in the root directory based on .env.example:
+3. Create a .env file in the root directory based on .env.example:
 
 ```bash
    DATABASE_URL=
    PORT=
 ```
 
-2. Run database migrations:
+4. Run database migrations:
 
 ```bash
    npx prisma migrate dev
 ```
 
-4. Seed the database:
+5. Seed the database:
 
 ```bash
    npx prisma db seed
 ```
 
-5. Start the server:
+6. Start the server:
 
 ```bash
    npm run dev
