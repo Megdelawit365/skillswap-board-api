@@ -1,6 +1,6 @@
 
 import * as listingService from "../services/listingServices.js"
-export const getListings = async (req, res) => {
+export const getListings = async (req, res, next) => {
     try {
         const queries = req.query
         const listings = await listingService.getListings(queries)
@@ -8,23 +8,21 @@ export const getListings = async (req, res) => {
             data: listings
         })
     } catch (err) {
-        console.log(err)
-        res.status(500).json({ error: "Internal server error." })
+        next(err)
     }
 }
 
-export const getListingById = async (req, res) => {
+export const getListingById = async (req, res, next) => {
     try {
         const listing = await listingService.getListingById(req.params.id)
         return res.status(200).json({
             data: listing
         })
     } catch (err) {
-        console.log(err)
-        res.status(500).json({ error: "Internal server error." })
+        next(err)
     }
 }
-export const createListing = async (req, res) => {
+export const createListing = async (req, res, next) => {
     try {
         const body = req.body
         const newListing = await listingService.createListing(body)
@@ -33,11 +31,10 @@ export const createListing = async (req, res) => {
             data: newListing
         })
     } catch (err) {
-        console.log(err)
-        res.status(500).json({ error: "Internal server error." })
+        next(err)
     }
 }
-export const updateListing = async (req, res) => {
+export const updateListing = async (req, res, next) => {
     try {
         const id = req.params.id
         const body = req.body
@@ -47,11 +44,10 @@ export const updateListing = async (req, res) => {
             data: updatedMovie
         })
     } catch (err) {
-        console.log(err)
-        res.status(500).json({ error: "Internal server error." })
+        next(err)
     }
 }
-export const deleteListing = async (req, res) => {
+export const deleteListing = async (req, res, next) => {
     try {
         const id = req.params.id
         const listing = await listingService.deleteListing(id)
@@ -60,7 +56,6 @@ export const deleteListing = async (req, res) => {
         }
         return res.status(204).send()
     } catch (err) {
-        console.log(err)
-        res.status(500).json({ error: "Internal server error." })
+        next(err)
     }
 }

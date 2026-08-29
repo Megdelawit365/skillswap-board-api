@@ -1,14 +1,13 @@
 import * as responseService from "../services/responseServices.js"
 
-export const getResponses = async (req, res) => {
+export const getResponses = async (req, res, next) => {
     try {
         const responses = await responseService.getResponses(req.params.id)
         return res.status(200).json({
             data: responses
         })
     } catch (err) {
-        console.log(err)
-        res.status(500).json({ error: "Internal server error." })
+        next(err)
     }
 }
 export const createResponses = async (req, res) => {
@@ -21,7 +20,6 @@ export const createResponses = async (req, res) => {
             data: newResponse
         })
     } catch (err) {
-        console.log(err)
-        res.status(500).json({ error: "Internal server error." })
+        next(err)
     }
 }
