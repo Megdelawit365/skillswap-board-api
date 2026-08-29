@@ -44,3 +44,14 @@ export const validateResponse = (req, res, next) => {
 
     next()
 }
+
+export const validateSkill = (req, res, next) => {
+    const { name } = req.body
+    if (name == undefined || name.trim() == "") {
+        return res.status(400).json({
+            message: "Response content cannot be empty."
+        })
+    }
+
+    next()
+}
