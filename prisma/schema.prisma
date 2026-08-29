@@ -29,7 +29,7 @@ model Listing {
 
 model Skill {
   id        Int       @id @default(autoincrement())
-  name      String
+  name      String    @unique
   listings  Listing[]
   createdAt DateTime  @default(now())
 }
@@ -41,4 +41,6 @@ model Response {
 
   listingId Int
   listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  @@index([listingId])
 }
