@@ -2,7 +2,7 @@
 export const validateListing = (req, res, next) => {
     // since responses are not added when listing is created, its not included
 
-    const { type, skills, description } = req.body
+    const { type, skills, description, email } = req.body
     if (type == undefined || typeof (type) != "string" || !["offering", "wanting"].includes(type.trim().toLowerCase())) {
         return res.status(400).json({
             message: "Type is missing or invalid."
@@ -18,6 +18,11 @@ export const validateListing = (req, res, next) => {
     if (!description || typeof (description) != "string" || description.trim() == "") {
         return res.status(400).json({
             message: "Description is missing or invalid."
+        })
+    }
+    if (!email || typeof (email) != "string" || email.trim() == "") {
+        return res.status(400).json({
+            message: "Email is missing or invalid."
         })
     }
 
@@ -49,7 +54,7 @@ export const validateSkill = (req, res, next) => {
     const { name } = req.body
     if (name == undefined || name.trim() == "") {
         return res.status(400).json({
-            message: "Response content cannot be empty."
+            message: "Skill name cannot be empty."
         })
     }
 

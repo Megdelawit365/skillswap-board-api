@@ -27,7 +27,7 @@ export const getListingById = async (id) => {
     return listing
 }
 export const createListing = async (body) => {
-    const { type, skills, responses, description } = body
+    const { type, skills, responses, description, email } = body
     const newListing = await prisma.listing.create({
         data: {
             type: type.toUpperCase(),
@@ -35,7 +35,8 @@ export const createListing = async (body) => {
                 connect: skills.map((skillId) => ({ id: Number(skillId) }))
             },
             responses: responses,
-            description: description
+            description: description,
+            email: email
         }, include: {
             skills: true
         }
