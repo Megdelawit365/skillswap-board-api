@@ -10,7 +10,7 @@ SkillSwap Board is where people can share skills they are willing to teach, ask 
 - Filter listings by type or skill, and search descriptions
 - Paginate using page and limit query parameters
 - Validate incoming request bodies and reject invalid route parameters before database operations.
-- Middleware for safe handling of 400, 404, 409, and 500 HTTP responses
+- Middleware for safe handling of 400, 404 and 500 HTTP responses
 - Script to populate PostgreSQL with initial sample data
 
 ## FOLDER STRUCTURE
@@ -62,6 +62,9 @@ skillswap-board-api/
 - GET /api/skills
   - Returns all  skills
 
+- GET /api/health
+  - Health check
+  
 ## DATABASE DESIGN
 
 ### TABLES OVERVIEW
@@ -75,8 +78,8 @@ skillswap-board-api/
 3. Response
    - Stores the response text to a listing, the id of the user and id of the listing
    - Primary key is id, foreign keys are listing_id and user_id
-4. Listing_Skill
-   - It's a junction table for listing and skill
+4. _ListingToSkill
+   - It's an implicit junction table for listing and skill
    - Primary key is (listing_id, skill_id) and foreign keys are listing_id and skill_id
   
 ### DATABASE RELATIONSHIPS
